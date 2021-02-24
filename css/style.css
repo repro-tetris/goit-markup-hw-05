@@ -12,6 +12,8 @@
   --bg-light: #f5f4fa;
   --border-color-light: #ececec;
   --customer-color: #afb1b8;
+
+  --transition-type: cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* #endregion */
 
@@ -114,7 +116,7 @@ button {
   color: var(--main-color-darkgrey);
   text-decoration: none;
 
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--transition-type);
 }
 .nav-link.active {
   position: relative;
@@ -156,7 +158,7 @@ button {
   color: var(--main-color-lightgrey);
   fill: currentColor;
 
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--transition-type);
 }
 
 .contacts-link:hover,
@@ -220,65 +222,6 @@ button {
   cursor: pointer;
 }
 
-.backdrop {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 100;
-
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.backdrop.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.backdrop.is-hidden .hero-modal {
-  transform: translate(-50%, -50%) scale(1, 0);
-}
-
-.hero-modal {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 528px;
-  height: 581px;
-  background-color: rgb(var(--white-color-rgb));
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  transform: translate(-50%, -50%) scale(1, 1);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
-}
-
-.hero-modal-close-btn {
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  right: 8px;
-  top: 8px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  color: rgb(var(--bg-dark));
-  background-color: rgb(var(--white-color-rgb));
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  fill: currentColor;
-
-  transition: background-color 250ms, color 250ms 100ms;
-}
-
-.hero-modal-close-btn:hover,
-.hero-modal-close-btn:focus {
-  background-color: var(--main-color-darkgrey);
-  color: rgb(var(--white-color-rgb));
-}
 /* #endregion */
 
 /* #region ADVANTAGES */
@@ -456,8 +399,8 @@ button {
   color: var(--customer-color);
   fill: currentColor;
 
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--transition-type),
+    background-color 250ms var(--transition-type);
 }
 
 .social + .social {
@@ -509,7 +452,7 @@ button {
   color: var(--customer-color);
   fill: currentColor;
 
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--transition-type);
 }
 
 .client-link:hover,
@@ -556,7 +499,7 @@ button {
   line-height: 1.5;
   color: rgb(var(--white-color-rgb));
 
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--transition-type);
 }
 
 .opacity06 {
@@ -593,7 +536,7 @@ button {
   color: rgb(var(--white-color-rgb));
   fill: currentColor;
 
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms var(--transition-type);
 }
 
 .social-icon + .social-icon {
@@ -634,9 +577,9 @@ button {
   border: none;
   border-radius: 4px;
 
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--transition-type),
+    background-color 250ms var(--transition-type),
+    box-shadow 250ms var(--transition-type);
 }
 
 .filter-btn:hover,
@@ -677,7 +620,7 @@ button {
   margin-left: 30px;
   margin-top: 30px;
 
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow 250ms var(--transition-type);
 }
 
 .portfolio-item:hover,
@@ -725,7 +668,7 @@ button {
   opacity: 0;
   transform: translateY(100%);
 
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms var(--transition-type);
 }
 
 .portfolio-subtitle {
@@ -741,5 +684,68 @@ button {
   font-size: 16px;
   color: var(--main-color-lightgrey);
   line-height: 1.87;
+}
+/* #endregion */
+
+/* #region Modal */
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 100;
+
+  transition: opacity 250ms var(--transition-type);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(1, 0);
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 528px;
+  height: 581px;
+  background-color: rgb(var(--white-color-rgb));
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transform: translate(-50%, -50%) scale(1, 1);
+  transition: transform 250ms var(--transition-type) 250ms;
+}
+
+.modal-close-btn {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  right: 8px;
+  top: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: rgb(var(--bg-dark));
+  background-color: rgb(var(--white-color-rgb));
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  fill: currentColor;
+
+  transition: background-color 250ms, color 250ms 100ms;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  background-color: var(--main-color-blue);
+  color: rgb(var(--white-color-rgb));
 }
 /* #endregion */
